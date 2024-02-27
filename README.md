@@ -26,7 +26,7 @@ To start a new Django Nest project, you can choose from the following options:
 2. Cloning an existing project from the repository:
 
 ```bash
-🌟 git clone "https://github.com/Pythonautas/DNest.git" "my_project"
+🌟 git clone "git@github.com:TechFourGood/django_nest.git" "my_project"
 ```
 
 After creating the project, navigate to the project directory:
@@ -38,6 +38,11 @@ After creating the project, navigate to the project directory:
 #### Setting up the Database
 
 To start the database, use the following command with Docker Compose:
+
+```bash
+cp .env.example .env
+```
+
 ```bash
 🗃️ docker-compose up db -d
 ```
@@ -51,12 +56,27 @@ To start the application, use the following command with Docker Compose:
  Open New Terminal
 
 ```bash
-📱 poetry shell
- ```
+poetry shell
+```
 
 ```bash
-📱 python3 manage.py createsuperuser
- ```
+export DB_HOST=localhost
+```
+```bash
+export DB_PASSWD=passwd
+```
+```bash
+export DB_USER=postgres
+```
+```bash
+export DB_name=postgres
+```
+```bash
+export DB_PORT=5432
+```
+```bash
+python3 manage.py createsuperuser
+```
 
 
 
