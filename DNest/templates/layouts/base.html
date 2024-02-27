@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load i18n static DNest %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_direction as direction %}
+{% get_admin_setting as admin_setting %}
+<html lang="en">
+
+<head>
+  {% include 'includes/head.html' %}
+  {% block extrastyle %}{% endblock extrastyle %}
+  {% block extrahead %}{% endblock extrahead %}
+</head>
+
+<body class="{% block body %}sidebar-mini{% endblock body %}">
+
+  <div class="wrapper">
+    {% block nav_minimize %}
+      {% include 'includes/nav-minimize.html' %}
+    {% endblock nav_minimize %}
+
+    {% block sidebar %}
+      {% include 'includes/sidebar.html' %}
+    {% endblock sidebar %}
+
+    <div class="main-panel">
+
+      {% block header %}
+        {% include 'includes/navigation.html' %}
+      {% endblock header %}
+
+      {% block content %}{% endblock content %}
+
+      {% comment %} {% block footer %}
+        {% include 'includes/footer.html' %}
+      {% endblock footer %} {% endcomment %}
+
+    </div>
+
+  </div>
+  {% include 'includes/scripts.html' %}
+  {% block extra_js %}{% endblock extra_js %}
+
+  <script>
+    $("body").click(function (event) {
+      var navigation = $(event.target).parents(".navbar").length;
+      if(!navigation) {
+        $(".navbar .navbar-collapse").collapse("hide");
+      }
+    });
+  </script>
+
+</body>
+</html>

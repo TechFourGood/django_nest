@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-calendar">
+          <div class="card-body">
+            <div id="fullCalendar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'includes/footer.html' %}
+  </div>
+
+{% endblock content %}
+
+{% block extra_js %}
+  <script>
+    demo.initFullCalendar();
+  </script>
+{% endblock extra_js %}

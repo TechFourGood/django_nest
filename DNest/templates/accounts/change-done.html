@@ -1,0 +1,78 @@
+{% extends 'layouts/base-auth.html' %}
+{% load static %}
+
+{% block body %}login-page{% endblock body %}
+{% block page %}login-page{% endblock page %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="container">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <form class="form">
+
+          <div class="card card-login card-white">
+            <div class="card-header">
+              <img src="{% static 'assets/img/card-primary.png' %}" alt="">
+              <h1 class="card-title">Done</h1>
+            </div>
+            <div class="card-body">
+              Your password has been changed successfully.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    $(document).ready(function() {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 786,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+
+{% endblock extra_js %}

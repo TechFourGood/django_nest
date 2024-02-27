@@ -1,0 +1,107 @@
+{% extends 'layouts/base-auth.html' %}
+{% load static %}
+
+{% block body %}register-page{% endblock body %}
+{% block page %}register-page{% endblock page %}
+
+{% block content %}
+<div class="content">
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="mt-5"></div>
+            <h1 class="title-digit">Register</h1>
+            <div class="mb-5"></div>
+        </div>
+        <div class="col-md-6 ml-auto mr-auto">
+            <img src="{% static 'assets/img/newsletter.gif' %}" alt="newsletter" class="img-fluid gif-margen" width="100%" height="100%">
+        </div>
+        <div class="col-md-6 ml-auto mr-auto text-left">
+            <form method="post">
+                {% csrf_token %}
+                <!-- {{ form.as_p }}  -->
+                <div class="mt-5"></div>
+                {{ form.username }}
+                <span class="text-danger">{{ form.username.errors }}</span>
+                <div class="mb-3"></div>
+                {{ form.email }}
+                <span class="text-danger">{{ form.email.errors }}</span>
+
+                <div class="mb-3"></div>
+                {{ form.password1}}
+                <span class="text-danger">{{ form.password1.errors }}</span>
+
+                <div class="mb-3"></div>
+                {{ form.password2 }}
+                <span class="text-danger">{{ form.password2.errors }}</span>
+
+                <div class="mb-3"></div>
+                <div style="margin-left: 5%;">
+                {{ form.subscribe }}
+                I agree to the
+                <a href="javascript:void(0)">terms and conditions</a>
+                 <span class="text-danger">{{ form.subscribe.errors }}</span>
+                </div>
+                <div class="mb-3"></div>
+                <button type="submit" class="glow-on-hover" style="--button-background: #0b0b0f">Submit</button>
+                <div class="mb-5"></div>
+
+
+
+        </div>
+
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    $(document).ready(function() {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 786,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+
+{% endblock extra_js %}

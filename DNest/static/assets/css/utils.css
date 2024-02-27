@@ -1,0 +1,355 @@
+.stars {
+    position: absolute;
+    top: 100px;
+    left: -420px;
+    width: 1px;
+    height: 1px;
+    /* background: transparent; */
+    opacity: 0.7;
+    box-shadow: var(--star-list);
+    z-index: 1;
+    animation: anim-stars 10s linear infinite;
+  }
+
+  .stars::after{
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    opacity: 0.7;
+    top: 100px;
+    width: 3px;
+    height: 3px;
+    /* border-radius: 50%; */
+    box-shadow: var(--star-list);
+  }
+
+  @keyframes anim-stars {
+      from {
+          transform: translateY(0px);
+      }
+      to {
+          transform: translateY(-50px);
+      }
+  }
+
+.logofade {
+  animation-name: logofadeout;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  z-index: 2;
+}
+
+@keyframes logofadeout {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .logofade {
+    width: 70%;
+  }
+  @keyframes logofadeout {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+}
+
+.bg-matte {
+    opacity: 0.95;
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000;
+    background: var(--button-background);
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--button-background);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+.btn-circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    color: transparent;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+
+}
+
+.btn-circle i {
+    position: absolute;
+    z-index: 3;
+    font-size: 1.5em;
+    color:white;
+    transform: translate(-50%, -50%);
+}
+
+.btn-circle:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 50%;
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+.btn-circle:active {
+    color: #000;
+    background: var(--button-background);
+  }
+.btn-circle:active:after {
+    background: transparent;
+}
+.btn-circle:hover:before {
+opacity: 1;
+}
+
+.btn-circle:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--button-background);
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+.loader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    z-index: 1;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.8s ease-in-out;
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+  }
+  .loader:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1rem #fff;
+    animation-name: pulsIn;
+  }
+  .loader:after {
+    width: calc(100% - 2rem);
+    padding-bottom: calc(100% - 2rem);
+    box-shadow: 0 0 0 0 #fff;
+  }
+
+  @keyframes pulsIn {
+    0% {
+      box-shadow: inset 0 0 0 1rem #270743;
+      opacity: 1;
+    }
+    50%, 100% {
+      box-shadow: inset 0 0 0 0 #fff;
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulsOut {
+    0%, 50% {
+      box-shadow: 0 0 0 0 #fff;
+      opacity: 0;
+    }
+    100% {
+      box-shadow: 0 0 0 1rem #fff;
+      opacity: 1;
+    }
+  }
+
+.text-body-lp {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.layer-1 {
+    z-index: 1;
+}
+
+.layer-2 {
+    z-index: 2;
+}
+.layer-3 {
+    z-index: 3;
+}
+.layer-4 {
+    z-index: 4;
+}
+.layer-5 {
+    z-index: 5;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 33px;
+}
+
+.border-radius-down-left {
+    border-bottom-left-radius: 30px;
+    /* border-bottom-right-radius: 30px; */
+}
+.border-radius-down-right {
+    /* border-bottom-left-radius: 30px; */
+    border-bottom-right-radius: 30px;
+    background-color: transparent;
+}
+
+.sponsor-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsor-img ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.sponsor-img ul li {
+    margin: 0 10px;
+}
+
+.iframe-boder {
+    border-radius: 15px;
+}
+
+.gif-margen {
+    margin: 0%;
+    border-radius: 15px;
+    margin-bottom: 5%;
+  }
+
+.title-timeline {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: #12121C;
+    font-size: 1.0rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.content-gif {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: white;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.title-content-timeline {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: white;
+    margin-top: 15%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.content-timeline {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: white;
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+input[type="email"], input[type="text"], input[type="password"],input[type="checkbox"] {
+    text-align: left;
+}
+.check-box-center {
+    text-align: left;
+}
+
+.form-landingpage {
+    align-items: left;
+    text-align: left;
+}
+
+.nav-text {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+}

@@ -1,0 +1,85 @@
+{% extends 'layouts/base-auth.html' %}
+{% load static %}
+
+{% block body %}lock-page{% endblock body %}
+{% block page %}lock-page{% endblock page %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="container">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <div class="card card-lock card-white text-center">
+          <div class="card-header">
+            <img src="{% static 'assets/img/emilyz.jpg' %}" alt="...">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Joe Gardner</h4>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="tim-icons icon-key-25"></i>
+                </div>
+              </div>
+              <input type="text" class="form-control" placeholder="Password">
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="javascript:void(0)" class="btn btn-primary btn-round btn-lg">Unlock</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    $(document).ready(function() {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 786,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+
+{% endblock extra_js %}

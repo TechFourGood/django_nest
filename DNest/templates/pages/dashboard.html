@@ -1,0 +1,113 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  <div class="content">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-md-6 ml-auto mr-auto justify-content-center">
+            <span class="loader center"><img src="{% static 'assets/img/logo-fundotransparente.png' %}" alt="logo" class="img-fluid logofade" width="200" height="200"></span>
+        </div>
+        <div class="col-3"></div>
+
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-md-6 ml-auto mr-auto justify-content-center">
+            <div class="card card-testimonial">
+              <div class="card-header card-header-avatar">
+                  <!-- <img class="img img-raised" src="{% static 'assets/img/fsocietyperfil.png' %}" alt="Card image"> -->
+              </div>
+              <div class="card-body">
+                <div class="mt-5"></div>
+                <p class="card-description content-timeline" style="text-align: center;">
+                    Here, you can stay updated on all the latest news from the world of technology. In addition to featuring a framework, I'm transforming this newsletter into a network for technology, centralizing job openings, courses, open-source projects, releases, and more
+                </p>
+                <div class="icon icon-primary" style="color: white;">
+                  <i class="fa fa-quote-right"></i>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <h4 class="card-title content-timeline" style="text-align: center;">Daniel Prata</h4>
+                <p class="category">Founder of DNest</p>
+                <p class="category">With small initiatives, we can make a difference in the world.</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-3"></div>
+
+    </div>
+    <div class="row">
+    <div class="col-3"></div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="info-icon text-center icon-success" style="background: #b250ec;">
+                  <i class="tim-icons icon-single-02"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p class="card-category">Users</p>
+                  <h3 class="card-title">68</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <hr>
+            <div class="stats">
+              <i class="tim-icons icon-trophy"></i> Join the developer <a href="https://github.com/Pythonautas">community</a> and make your mark in the world of code. Your contribution can make all the difference!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="info-icon text-center icon-danger" style="background: #b250ec;" >
+                  <i class="tim-icons icon-bank"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p class="card-category">Total Balance</p>
+                  <h3 class="card-title">$0,00</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <hr>
+            <div class="stats">
+              <i class="tim-icons icon-bulb-63"></i> Discover our open wallet at <a href="https://opencollective.com/django_nest">OpenCollective</a> and see how you can contribute. Also, check out my profile on GitHub <a href="https://github.com/sponsors/pratadaniel94">Sponsors</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    {% include 'includes/footer.html' %}
+  </div>
+{% else %}
+{% endif %}
+{% endblock content %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function () {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+      demo.initVectorMap();
+
+    });
+  </script>
+{% endblock extra_js %}

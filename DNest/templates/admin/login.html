@@ -1,0 +1,141 @@
+{% extends 'layouts/base-auth.html' %}
+{% load i18n static DNest %}
+
+{% block body %}login-page{% endblock body %}
+{% block page %}login-page{% endblock page %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="container">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <form method="post" class="form">
+          {% csrf_token %}
+
+          <div class="card card-login card-white">
+            <div class="card-img-top">
+              <a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/card_login.png' %}" alt=""></a>
+            </div>
+            <div class="card-body">
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-single-02"></i>
+                  </div>
+                </div>
+								<input
+									id="{{ form.username.id_for_label }}"
+									name="{{ form.username.name }}"
+									type="text"
+									class="form-control"
+									placeholder="Username"
+									required
+								>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"></i>
+                  </div>
+                </div>
+                <input
+									id="{{ form.password.id_for_label }}"
+									name="{{ form.password.name }}"
+									type="password"
+									class="form-control"
+									placeholder="Password"
+									required
+								>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    $(document).ready(function() {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 786,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+
+	<script type="application/javascript">
+			{% if form.username.errors %}
+					notification.danger("{{ form.username.errors }}", 'top', 'right');
+			{% endif %}
+			{% if form.password.errors %}
+					notification.danger("{{ form.password.errors }}", 'top', 'right');
+			{% endif %}
+
+			{% if user.is_authenticated %}
+					var msg = "You are authenticated as {{ username }}, but are not authorized to " +
+							"access this page.Would you like to login to a different account ?"
+					notification.warning(msg, 'top', 'right');
+			{% endif %}
+
+			{% if form.errors and not form.non_field_errors %}
+					{% if form.errors.items|length == 1 %}
+							notification.warning("{% trans "Please correct the error below." %}", 'top', 'right');
+					{% else %}
+							notification.warning("{% trans "Please correct the errors below." %}", 'top', 'right');
+					{% endif %}
+			{% endif %}
+
+			{% if form.non_field_errors %}
+					{% for error in form.non_field_errors %}
+							notification.warning("{{ error|clean_text }}", 'top', 'right');
+					{% endfor %}
+			{% endif %}
+	</script>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+# Arquivos e diretórios gerados pelo sistema operacional
+*.pyc
+__pycache__/
+.DS_Store
+
+# Diretório virtualenv
+venv/
+
+# Arquivos de configuração local
+*.sqlite3
+*.env
+
+# Arquivos de logs
+*.log
+
+# Arquivos de mídia
+media/
+
+# Dependências instaladas via pip
+# (Você pode ajustar isso dependendo do seu ambiente de desenvolvimento)
+/lib/
+/lib64/
+/bin/
+/include/
+/local/
+/share/
+
+# Configurações específicas de IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Cache e arquivos temporários
+__pycache__/
+*.swp
+*.bak
+*.cache
+
+# Arquivos de configuração
+*.ini
+*.conf
+*.cfg
+
+# Arquivos de compilação
+*.o
+*.obj
+
+# Arquivos gerados durante testes
+.coverage
+htmlcov/
+
+# Arquivos de documentação
+doc/
+docs/
+
+# Dependências JavaScript
+node_modules/
+package-lock.json
+yarn.lock
+
+# Dependências Python geradas
+pip-selfcheck.json
+
+# Arquivos gerados pelo sistema operacional macOS
+Icon?
+.env
+*sqlite3
+
+**migrations**
+data
+dist
+build
+*backup
+django_nest.egg-info
+staticfiles
+premium
+authentication
+.gitkeep

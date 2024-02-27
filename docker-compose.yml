@@ -1,0 +1,25 @@
+services:
+  app:
+    env_file: .env
+    build: .
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    working_dir: /app
+    command:
+      [
+          "./scripts/start-local.sh"
+      ]
+    environment:
+      PYTHONUNBUFFERED: 1
+  db:
+    image: postgres
+    environment:
+      POSTGRESS_USER: postgres
+      POSTGRESS_DB: postgres
+      POSTGRES_PASSWORD: passwd
+    ports:
+      - 5432:5432

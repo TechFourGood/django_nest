@@ -1,0 +1,127 @@
+{% extends 'layouts/base-auth.html' %}
+{% load static %}
+
+{% block body %}login-page{% endblock body %}
+{% block page %}login-page{% endblock page %}
+
+{% block content %}
+
+  <div class="content bg-dark-darker">
+    <div class="container">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <form method="post" class="form">
+          {% csrf_token %}
+
+          <div class="card card-login card-white">
+            <div class="card-img-top">
+                <a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/card_login.png' %}" alt=""></a>
+            </div>
+            <div class="card-body">
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-single-02"></i>
+                  </div>
+                </div>
+                {{ form.username }}
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"></i>
+                  </div>
+                </div>
+                {{ form.password }}
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Login</button>
+              <div class="pull-left">
+                <h6>
+                  <a href="{% url 'register' %}" class="link footer-link">Create Account</a>
+                </h6>
+              </div>
+              <div class="pull-right">
+                <h6>
+                  <a href="{% url 'password_reset' %}" class="link footer-link">Forgot Password?</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="content bg-darker-dark">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-12 mb-5"></div> -->
+        </div>
+
+    </div>
+  </div>
+  <div class="content bg-contentforfooter">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-12 mb-5"></div> -->
+        </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    $(document).ready(function() {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 786,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+
+{% endblock extra_js %}
